@@ -1,35 +1,5 @@
 import React from 'react/addons';
-
-
-
-let Tab = React.createClass({
-
-    propTypes: {
-        id: React.PropTypes.string.isRequired,
-        name: React.PropTypes.string.isRequired
-        //active: React.PropTypes.boolean
-    },
-
-    onClick() {
-        console.info('Tab.onClick');
-        this.props.selectTab(this);
-    },
-
-    render() {
-        console.info('Tab.render');
-        let classes = ['Tab'];
-        if (this.props.active) {
-            classes.push('active');
-        }
-        return (
-            <div className={classes.join(' ')} onClick={this.onClick}>
-                {this.props.name}
-            </div>
-        )
-    }
-});
-
-
+import Tab from './Tab';
 
 
 
@@ -72,9 +42,9 @@ let TabPane = React.createClass({
         console.info('TabPane.render');
         let classes = ['TabPane', this.props.orientation].join(' ');
         let paneClasses = ['TabPaneDisplay', this.props.className].join(' ');
-        let selectedid = this.state.selectedTab.props.id;
+        let selectedId = this.state.selectedTab.props.id;
         let elements = this.props.children.map((child) => {
-            let active = child.props.id === selectedid;
+            let active = child.props.id === selectedId;
             return React.addons.cloneWithProps(child, {
                 active: active,
                 selectTab: this.selectTab,
@@ -98,7 +68,4 @@ let TabPane = React.createClass({
 
 
 
-module.exports = {
-    TabPane: TabPane,
-    Tab: Tab
-};
+module.exports = TabPane;
