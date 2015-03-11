@@ -1,7 +1,6 @@
 import React from 'react/addons';
 import Tab from './Tab';
-
-
+import prefix from '../prefix/Prefix';
 
 let TabPane = React.createClass({
 
@@ -40,8 +39,52 @@ let TabPane = React.createClass({
 
     render() {
         console.info('TabPane.render');
+
         let classes = ['TabPane', this.props.orientation].join(' ');
+        let styles;
+        if (this.props.orientation === 'vertical') {
+            styles = {
+                display: 'flex',
+                flex: 1,
+                flexDirection: 'row',
+                height: '100%',
+                position: 'absolute',
+                left: 0,
+                right: 0
+            };
+        } else {
+            styles = {
+                display: 'flex',
+                flex: 1,
+                position: 'relative',
+                flexDirection: 'column',
+                height: '100%',
+                minHeight: '100%'
+            };
+        }
+
+        let tabsClasses = 'Tabs';
+        let tabsStyles;
+        if (this.props.orientation === 'vertical') {
+            tabsStyles = {
+                //flex: 1,
+                height: '100%'
+            };
+        } else {
+            tabsStyles = {
+                flex: 1,
+                width: '100%',
+                whiteSpace: 'nowrap'
+            };
+        }
+
+
         let paneClasses = ['TabPaneDisplay', this.props.className].join(' ');
+        let paneStyles = {
+            flex: 1
+        };
+
+
         let selectedId = this.state.selectedTab.props.id;
         let elements = this.props.children.map((child) => {
             let active = child.props.id === selectedId;
@@ -54,11 +97,11 @@ let TabPane = React.createClass({
         });
 
         return (
-            <div className={classes} ref="TabPane">
-                <div className="tabs">
+            <div className={classes} style={prefix(styles)} ref="TabPane">
+                <div className="Tabs" style={prefix(tabsStyles)}>
                     {elements}
                 </div>
-                <div className={paneClasses}>
+                <div className={paneClasses} style={prefix(paneStyles)}>
                     {this.state.selectedTab.props.children}
                 </div>
             </div>

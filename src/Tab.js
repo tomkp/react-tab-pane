@@ -20,6 +20,9 @@ let Tab = React.createClass({
         if (this.props.active) {
             classes.push('active');
         }
+        let styles = {
+            cursor: 'pointer'
+        };
         return (
             <div className={classes.join(' ')} onClick={this.onClick}>
                 {this.props.name}
