@@ -1,6 +1,6 @@
 import React from 'react/addons';
 import Tab from './Tab';
-import prefix from '../prefix/Prefix';
+import prefix from './Prefix';
 
 let TabPane = React.createClass({
 
