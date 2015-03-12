@@ -65,7 +65,8 @@ let TabPane = React.createClass({
 
         let tabsClasses = 'Tabs';
         let tabsStyles;
-        if (this.props.orientation === 'vertical') {
+        let orientation = this.props.orientation;
+        if (orientation === 'vertical') {
             tabsStyles = {
                 //flex: 1,
                 height: '100%'
@@ -91,6 +92,7 @@ let TabPane = React.createClass({
             return React.addons.cloneWithProps(child, {
                 active: active,
                 selectTab: this.selectTab,
+                orientation: orientation,
                 id: child.props.id,
                 key: child.props.id
             });

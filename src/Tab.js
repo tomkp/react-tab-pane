@@ -20,11 +20,20 @@ let Tab = React.createClass({
         if (this.props.active) {
             classes.push('active');
         }
-        let styles = {
-            cursor: 'pointer'
-        };
+        let style;
+        if (this.props.orientation === 'vertical') {
+            style = {
+                cursor: 'pointer',
+                display: 'block'
+            };
+        } else {
+            style = {
+                cursor: 'pointer',
+                display: 'inline-block'
+            };
+        }
         return (
-            <div className={classes.join(' ')} onClick={this.onClick}>
+            <div className={classes.join(' ')} style={style} onClick={this.onClick}>
                 {this.props.name}
             </div>
         )

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>React Tab Pane</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.2/normalize.min.css" rel="stylesheet">
+
+    <style>
+
+        *, *:before, *:after {
+            -moz-box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+
+        * {
+            position: relative;
+        }
+
+        html, body {
+            font-size: 16px;
+            line-height: 1.5rem;
+        }
+
+
+        .TabPane.vertical .Tabs {
+            width: 4rem;
+        }
+
+        .TabPane.vertical .Tab {
+            border-bottom: 1px solid #fff;
+            text-align: center;
+        }
+
+        .TabPane.vertical .my-tabs {
+            padding: 1rem;
+            border-left: 4px solid #272822;
+        }
+
+        @media screen and (max-width: 1000px) {
+            .TabPane.vertical .Tab {
+                width: 2rem;
+            }
+        }
+
+        .TabPane.horizontal .Tab {
+            border-right: 1px solid #fff;
+            width: 8rem;
+            text-align: center;
+        }
+
+        .TabPane.horizontal .my-tabs {
+            padding: 1rem;
+            border-top: 4px solid #272822;
+        }
+
+        @media screen and (max-width: 1000px) {
+            .TabPane.horizontal .Tab {
+                width: 2rem;
+            }
+        }
+
+        .Tab {
+            line-height: 4rem;
+            background: #eee;
+        }
+
+        .Tab.active {
+            background: #272822;
+            color: #f8f8f2;
+        }
+
+    </style>
+</head>
+<body>
+
+</body>
+
+<script src="Bundle.js"></script>
+</html>
