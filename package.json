@@ -2,7 +2,7 @@
   "name": "react-auto-suggest",
   "description": "React auto-suggest component",
   "main": "src/auto-suggest.js",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "repository": {
     "type": "git",
     "url": "https://github.com/tomkp/react-auto-suggest"
