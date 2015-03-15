@@ -1,38 +1,46 @@
 {
-  "name": "react-auto-suggest",
-  "description": "React auto-suggest component",
-  "main": "src/auto-suggest.js",
+  "name": "react-tab-pane",
+  "description": "React tab-pane component",
+  "main": "dist/TabPane.js",
   "version": "0.0.2",
   "repository": {
     "type": "git",
-    "url": "https://github.com/tomkp/react-auto-suggest"
+    "url": "https://github.com/tomkp/react-tab-pane"
   },
   "author": "tomkp <tom@tomkp.com>",
   "keywords": [
     "react",
     "react-component",
-    "auto-suggest"
+    "tab-pane"
   ],
+  "dependencies": {
+    "react": "^0.13.0-rc1"
+  },
   "devDependencies": {
     "babel-core": "^4.6.6",
     "babel-jest": "^4.0.0",
     "babelify": "^5.0.4",
     "browserify": "^9.0.3",
-    "jest-cli": "^0.4.0"
+    "jest-cli": "^0.4.0",
+    "react-tools": "^0.13.0-rc1"
   },
   "scripts": {
     "test": "jest",
-    "demo": "browserify demo/Demo.js -t babelify --outfile demo/Bundle.js",
-    "build": "browserify src/TabPane.js -t babelify --outfile dist/TabPane.js"
-  },
-  "dependencies": {
-    "react": "^0.13.0-rc1"
+    "build": "browserify src/TabPane.js -t -o dist/TabPane.js",
+    "demo": "browserify demo/Example.js -t -o demo/bundle.js"
   },
   "jest": {
     "rootDir": "./src",
     "scriptPreprocessor": "../preprocessor.js",
     "unmockedModulePathPatterns": [
       "react"
+    ]
+  },
+  "browserify": {
+    "transform": [
+      [
+        "babelify"
+      ]
     ]
   }
 }
