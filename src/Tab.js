@@ -1,4 +1,5 @@
 import React from 'react/addons';
+import VendorPrefix from 'react-vendor-prefix';
 
 
 let Tab = React.createClass({
@@ -32,8 +33,11 @@ let Tab = React.createClass({
                 display: 'inline-block'
             };
         }
+
+        let prefixed = VendorPrefix.prefix({styles: style});
+
         return (
-            <div className={classes.join(' ')} style={style} onClick={this.onClick}>
+            <div className={classes.join(' ')} style={prefixed.styles} onClick={this.onClick}>
                 {this.props.name}
             </div>
         )

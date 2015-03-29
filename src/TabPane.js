@@ -1,6 +1,6 @@
 import React from 'react/addons';
 import Tab from './Tab';
-import prefix from './Prefix';
+import VendorPrefix from 'react-vendor-prefix';
 
 let TabPane = React.createClass({
 
@@ -98,12 +98,18 @@ let TabPane = React.createClass({
             });
         });
 
+
+        let prefixed = VendorPrefix.prefix({styles: styles});
+        let tabPrefixed = VendorPrefix.prefix({styles: tabsStyles});
+        let panePrefixed = VendorPrefix.prefix({styles: paneStyles});
+
+
         return (
-            <div className={classes} style={prefix(styles)} ref="TabPane">
-                <div className="Tabs" style={prefix(tabsStyles)}>
+            <div className={classes} style={prefixed.styles} ref="TabPane">
+                <div className="Tabs" style={tabPrefixed.styles}>
                     {elements}
                 </div>
-                <div className={paneClasses} style={prefix(paneStyles)}>
+                <div className={paneClasses} style={panePrefixed.styles}>
                     {this.state.selectedTab.props.children}
                 </div>
             </div>
