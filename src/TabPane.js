@@ -63,7 +63,6 @@ let TabPane = React.createClass({
             };
         }
 
-        let tabsClasses = 'Tabs';
         let tabsStyles;
         let orientation = this.props.orientation;
         if (orientation === 'vertical') {
