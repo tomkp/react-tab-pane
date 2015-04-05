@@ -15,7 +15,43 @@ describe('TabPane', function () {
     );
 
     it('renders the TabPane', function () {
-        var component = TestUtils.findRenderedDOMComponentWithClass(tabPane, 'TabPane');
+        new Asserter(tabPane)
+            .assertTabs(['A', 'B', 'C'])
+            .assertActiveTab('B')
+        ;
     });
+
+
+
+    class Asserter {
+
+        constructor(tabPane) {
+            this.component = TestUtils.findRenderedDOMComponentWithClass(tabPane, 'TabPane');
+        }
+
+        assertTabs(expectedTabs) {
+            let suggestions = TestUtils.scryRenderedDOMComponentsWithClass(this.component, 'Tab');
+            var values = suggestions.map((suggestion) => {
+                return suggestion.getDOMNode().innerHTML;
+            });
+            expect(values).to.eql(expectedTabs);
+            return this;
+        }
+
+        assertTabContentss(expectedTabContents) {
+            let suggestions = TestUtils.scryRenderedDOMComponentsWithClass(this.component, 'Tab');
+            var values = suggestions.map((suggestion) => {
+                return suggestion.getDOMNode().innerHTML;
+            });
+            expect(values).to.eql(expectedTabContents);
+            return this;
+        }
+
+        assertActiveTab(expected) {
+            let active = TestUtils.findRenderedDOMComponentWithClass(this.component, 'active');
+            expect(active.getDOMNode().innerHTML).to.equal(expected);
+            return this;
+        }
+    }
 
 });

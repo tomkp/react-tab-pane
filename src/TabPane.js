@@ -15,35 +15,33 @@ let TabPane = React.createClass({
     },
 
     getInitialState() {
-        console.info('TabPane.getInitialState');
-        let selected = this.props.children[0];
+        let active = this.props.children[0];
         this.props.children.forEach((child) => {
             child.props.parent = this;
-            if (child.props.selected) {
-                selected = child;
+            if (child.props.active) {
+                active = child;
+            } else  if (child.props.active) {
+                active = child;
             }
         });
         return {
-            selectedTab: selected
+            activeTab: active
         }
     },
 
 
     selectTab(tab) {
-        console.info('TabPane.selectTab', tab.props.name);
         this.setState({
-            selectedTab: tab
+            activeTab: tab
         });
     },
 
 
     render() {
-        console.info('TabPane.render');
-
         let classes = ['TabPane', this.props.orientation].join(' ');
-        let styles;
+        let containerStyles;
         if (this.props.orientation === 'vertical') {
-            styles = {
+            containerStyles = {
                 display: 'flex',
                 flex: 1,
                 flexDirection: 'row',
@@ -53,7 +51,7 @@ let TabPane = React.createClass({
                 right: 0
             };
         } else {
-            styles = {
+            containerStyles = {
                 display: 'flex',
                 flex: 1,
                 position: 'relative',
@@ -67,7 +65,6 @@ let TabPane = React.createClass({
         let orientation = this.props.orientation;
         if (orientation === 'vertical') {
             tabsStyles = {
-                //flex: 1,
                 height: '100%'
             };
         } else {
@@ -78,16 +75,14 @@ let TabPane = React.createClass({
             };
         }
 
-
-        let paneClasses = ['TabPaneDisplay', this.props.className].join(' ');
+        let paneClasses = ['TabContent', this.props.className].join(' ');
         let paneStyles = {
             flex: 1
         };
 
-
-        let selectedId = this.state.selectedTab.props.id;
+        let activeId = this.state.activeTab.props.id;
         let elements = this.props.children.map((child) => {
-            let active = child.props.id === selectedId;
+            let active = child.props.id === activeId;
             return React.addons.cloneWithProps(child, {
                 active: active,
                 selectTab: this.selectTab,
@@ -97,19 +92,19 @@ let TabPane = React.createClass({
             });
         });
 
-
-        let prefixed = VendorPrefix.prefix({styles: styles});
-        let tabPrefixed = VendorPrefix.prefix({styles: tabsStyles});
-        let panePrefixed = VendorPrefix.prefix({styles: paneStyles});
-
+        let styles = VendorPrefix.prefix({
+            container: containerStyles,
+            tab: tabsStyles,
+            pane: paneStyles
+        });
 
         return (
-            <div className={classes} style={prefixed.styles} ref="TabPane">
-                <div className="Tabs" style={tabPrefixed.styles}>
+            <div className={classes} style={styles.container} ref="TabPane">
+                <div className="Tabs" style={styles.tab}>
                     {elements}
                 </div>
-                <div className={paneClasses} style={panePrefixed.styles}>
-                    {this.state.selectedTab.props.children}
+                <div className={paneClasses} style={styles.pane}>
+                    {this.state.activeTab.props.children}
                 </div>
             </div>
         )

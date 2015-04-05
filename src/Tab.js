@@ -11,33 +11,31 @@ let Tab = React.createClass({
     },
 
     onClick() {
-        console.info('Tab.onClick');
         this.props.selectTab(this);
     },
 
     render() {
-        console.info('Tab.render');
         let classes = ['Tab'];
         if (this.props.active) {
             classes.push('active');
         }
-        let style;
+        let tabStyle;
         if (this.props.orientation === 'vertical') {
-            style = {
+            tabStyle = {
                 cursor: 'pointer',
                 display: 'block'
             };
         } else {
-            style = {
+            tabStyle = {
                 cursor: 'pointer',
                 display: 'inline-block'
             };
         }
 
-        let prefixed = VendorPrefix.prefix({styles: style});
+        let styles = VendorPrefix.prefix({tabStyle: tabStyle});
 
         return (
-            <div className={classes.join(' ')} style={prefixed.styles} onClick={this.onClick}>
+            <div className={classes.join(' ')} style={styles.tabStyle} onClick={this.onClick}>
                 {this.props.name}
             </div>
         )
