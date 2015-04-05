@@ -21824,34 +21824,32 @@ var Tab = React.createClass({
     },
 
     onClick: function onClick() {
-        console.info("Tab.onClick");
         this.props.selectTab(this);
     },
 
     render: function render() {
-        console.info("Tab.render");
         var classes = ["Tab"];
         if (this.props.active) {
             classes.push("active");
         }
-        var style = undefined;
+        var tabStyle = undefined;
         if (this.props.orientation === "vertical") {
-            style = {
+            tabStyle = {
                 cursor: "pointer",
                 display: "block"
             };
         } else {
-            style = {
+            tabStyle = {
                 cursor: "pointer",
                 display: "inline-block"
             };
         }
 
-        var prefixed = VendorPrefix.prefix({ styles: style });
+        var styles = VendorPrefix.prefix({ tabStyle: tabStyle });
 
         return React.createElement(
             "div",
-            { className: classes.join(" "), style: prefixed.styles, onClick: this.onClick },
+            { className: classes.join(" "), style: styles.tabStyle, onClick: this.onClick },
             this.props.name
         );
     }
@@ -21886,35 +21884,33 @@ var TabPane = React.createClass({
     getInitialState: function getInitialState() {
         var _this = this;
 
-        console.info("TabPane.getInitialState");
-        var selected = this.props.children[0];
+        var active = this.props.children[0];
         this.props.children.forEach(function (child) {
             child.props.parent = _this;
-            if (child.props.selected) {
-                selected = child;
+            if (child.props.active) {
+                active = child;
+            } else if (child.props.active) {
+                active = child;
             }
         });
         return {
-            selectedTab: selected
+            activeTab: active
         };
     },
 
     selectTab: function selectTab(tab) {
-        console.info("TabPane.selectTab", tab.props.name);
         this.setState({
-            selectedTab: tab
+            activeTab: tab
         });
     },
 
     render: function render() {
         var _this = this;
 
-        console.info("TabPane.render");
-
         var classes = ["TabPane", this.props.orientation].join(" ");
-        var styles = undefined;
+        var containerStyles = undefined;
         if (this.props.orientation === "vertical") {
-            styles = {
+            containerStyles = {
                 display: "flex",
                 flex: 1,
                 flexDirection: "row",
@@ -21924,7 +21920,7 @@ var TabPane = React.createClass({
                 right: 0
             };
         } else {
-            styles = {
+            containerStyles = {
                 display: "flex",
                 flex: 1,
                 position: "relative",
@@ -21934,12 +21930,10 @@ var TabPane = React.createClass({
             };
         }
 
-        var tabsClasses = "Tabs";
         var tabsStyles = undefined;
         var orientation = this.props.orientation;
         if (orientation === "vertical") {
             tabsStyles = {
-                //flex: 1,
                 height: "100%"
             };
         } else {
@@ -21950,14 +21944,14 @@ var TabPane = React.createClass({
             };
         }
 
-        var paneClasses = ["TabPaneDisplay", this.props.className].join(" ");
+        var paneClasses = ["TabContent", this.props.className].join(" ");
         var paneStyles = {
             flex: 1
         };
 
-        var selectedId = this.state.selectedTab.props.id;
+        var activeId = this.state.activeTab.props.id;
         var elements = this.props.children.map(function (child) {
-            var active = child.props.id === selectedId;
+            var active = child.props.id === activeId;
             return React.addons.cloneWithProps(child, {
                 active: active,
                 selectTab: _this.selectTab,
@@ -21967,22 +21961,24 @@ var TabPane = React.createClass({
             });
         });
 
-        var prefixed = VendorPrefix.prefix({ styles: styles });
-        var tabPrefixed = VendorPrefix.prefix({ styles: tabsStyles });
-        var panePrefixed = VendorPrefix.prefix({ styles: paneStyles });
+        var styles = VendorPrefix.prefix({
+            container: containerStyles,
+            tab: tabsStyles,
+            pane: paneStyles
+        });
 
         return React.createElement(
             "div",
-            { className: classes, style: prefixed.styles, ref: "TabPane" },
+            { className: classes, style: styles.container, ref: "TabPane" },
             React.createElement(
                 "div",
-                { className: "Tabs", style: tabPrefixed.styles },
+                { className: "Tabs", style: styles.tab },
                 elements
             ),
             React.createElement(
                 "div",
-                { className: paneClasses, style: panePrefixed.styles },
-                this.state.selectedTab.props.children
+                { className: paneClasses, style: styles.pane },
+                this.state.activeTab.props.children
             )
         );
     }
