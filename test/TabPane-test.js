@@ -1,12 +1,12 @@
 import expect from 'expect.js';
 import React from 'react/addons';
-let { TestUtils } = React.addons;
+const { TestUtils } = React.addons;
 import TabPane from '../src/TabPane';
 import Tab from '../src/Tab';
 
 describe('TabPane', function () {
 
-    var tabPane = TestUtils.renderIntoDocument(
+    const tabPane = TestUtils.renderIntoDocument(
         <TabPane orientation="horizontal" className="my-tabs">
             <Tab id="A" name="A">some stuff</Tab>
             <Tab id="B" name="B" active="true">whatevs</Tab>
@@ -31,7 +31,7 @@ describe('TabPane', function () {
 
         assertTabs(expectedTabs) {
             let suggestions = TestUtils.scryRenderedDOMComponentsWithClass(this.component, 'Tab');
-            var values = suggestions.map((suggestion) => {
+            const values = suggestions.map((suggestion) => {
                 return suggestion.getDOMNode().innerHTML;
             });
             expect(values).to.eql(expectedTabs);
@@ -40,7 +40,7 @@ describe('TabPane', function () {
 
         assertTabContentss(expectedTabContents) {
             let suggestions = TestUtils.scryRenderedDOMComponentsWithClass(this.component, 'Tab');
-            var values = suggestions.map((suggestion) => {
+            const values = suggestions.map((suggestion) => {
                 return suggestion.getDOMNode().innerHTML;
             });
             expect(values).to.eql(expectedTabContents);
