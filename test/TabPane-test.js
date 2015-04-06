@@ -1,8 +1,8 @@
 import expect from 'expect.js';
 import React from 'react/addons';
 let { TestUtils } = React.addons;
-var TabPane = require('../src/TabPane');
-var Tab = require('../src/Tab');
+import TabPane from '../src/TabPane';
+import Tab from '../src/Tab';
 
 describe('TabPane', function () {
 
