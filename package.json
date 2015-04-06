@@ -1,7 +1,7 @@
 {
   "name": "react-tab-pane",
   "description": "React tab-pane component",
-  "main": "dist/TabPane.js",
+  "main": "src/TabPane.js",
   "version": "0.0.2",
   "repository": {
     "type": "git",
@@ -19,15 +19,14 @@
     "react-vendor-prefix": "0.0.1"
   },
   "devDependencies": {
-    "babel-core": "^4.6.6",
-    "babelify": "^5.0.4",
-    "browserify": "^9.0.3",
-    "react-tools": "^0.13.0-rc1",
+    "babel-core": "^5.0.9",
+    "babelify": "^6.0.1",
+    "browserify": "^9.0.7",
     "coveralls": "^2.11.2",
     "expect.js": "^0.3.1",
-    "express": "^4.12.2",
-    "mochify": "^2.6.0",
-    "mochify-istanbul": "^2.1.1"
+    "mochify": "^2.7.0",
+    "mochify-istanbul": "^2.1.1",
+    "react-tools": "^0.13.1"
   },
   "scripts": {
     "test": "mochify -R spec",
