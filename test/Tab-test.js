@@ -1,6 +1,6 @@
 import expect from 'expect.js';
 import React from 'react/addons';
-let { TestUtils } = React.addons;
+const { TestUtils } = React.addons;
 import Tab from '../src/Tab';
 
 

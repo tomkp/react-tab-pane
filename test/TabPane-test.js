@@ -14,13 +14,13 @@ describe('TabPane', function () {
         </TabPane>
     );
 
+
     it('renders the TabPane', function () {
         new Asserter(tabPane)
             .assertTabs(['A', 'B', 'C'])
             .assertActiveTab('B')
         ;
     });
-
 
 
     class Asserter {
