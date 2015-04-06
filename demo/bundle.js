@@ -1,42 +1,48 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-"use strict";
+'use strict';
 
-var _interopRequire = function (obj) { return obj && obj.__esModule ? obj["default"] : obj; };
+var _interopRequireWildcard = function (obj) { return obj && obj.__esModule ? obj : { 'default': obj }; };
 
-var React = _interopRequire(require("react"));
+var _React = require('react');
 
-var TabPane = _interopRequire(require("../src/TabPane"));
+var _React2 = _interopRequireWildcard(_React);
 
-var Tab = _interopRequire(require("../src/Tab"));
+var _TabPane = require('../src/TabPane');
 
-var Demo = React.createClass({
-    displayName: "Demo",
+var _TabPane2 = _interopRequireWildcard(_TabPane);
+
+var _Tab = require('../src/Tab');
+
+var _Tab2 = _interopRequireWildcard(_Tab);
+
+var Demo = _React2['default'].createClass({
+    displayName: 'Demo',
 
     render: function render() {
-        return React.createElement(
-            TabPane,
-            { orientation: "horizontal", className: "my-tabs" },
-            React.createElement(
-                Tab,
-                { id: "A", name: "A" },
-                "some stuff"
+        return _React2['default'].createElement(
+            _TabPane2['default'],
+            { orientation: 'horizontal', className: 'my-tabs' },
+            _React2['default'].createElement(
+                _Tab2['default'],
+                { id: 'A', name: 'A' },
+                'some stuff'
             ),
-            React.createElement(
-                Tab,
-                { id: "B", name: "B", active: "true" },
-                "whatevs"
+            _React2['default'].createElement(
+                _Tab2['default'],
+                { id: 'B', name: 'B', active: 'true' },
+                'whatevs'
             ),
-            React.createElement(
-                Tab,
-                { id: "C", name: "C" },
-                "innit"
+            _React2['default'].createElement(
+                _Tab2['default'],
+                { id: 'C', name: 'C' },
+                'innit'
             )
         );
     }
 
 });
 
-React.render(React.createElement(Demo, null), document.body);
+_React2['default'].render(_React2['default'].createElement(Demo, null), document.body);
 
 },{"../src/Tab":177,"../src/TabPane":178,"react":176}],2:[function(require,module,exports){
 // shim for using process in browser
@@ -21806,20 +21812,28 @@ module.exports = warning;
 module.exports = require('./lib/React');
 
 },{"./lib/React":34}],177:[function(require,module,exports){
-"use strict";
+'use strict';
 
-var _interopRequire = function (obj) { return obj && obj.__esModule ? obj["default"] : obj; };
+var _interopRequireWildcard = function (obj) { return obj && obj.__esModule ? obj : { 'default': obj }; };
 
-var React = _interopRequire(require("react/addons"));
+Object.defineProperty(exports, '__esModule', {
+    value: true
+});
 
-var VendorPrefix = _interopRequire(require("react-vendor-prefix"));
+var _React = require('react/addons');
 
-var Tab = React.createClass({
-    displayName: "Tab",
+var _React2 = _interopRequireWildcard(_React);
+
+var _VendorPrefix = require('react-vendor-prefix');
+
+var _VendorPrefix2 = _interopRequireWildcard(_VendorPrefix);
+
+var Tab = _React2['default'].createClass({
+    displayName: 'Tab',
 
     propTypes: {
-        id: React.PropTypes.string.isRequired,
-        name: React.PropTypes.string.isRequired
+        id: _React2['default'].PropTypes.string.isRequired,
+        name: _React2['default'].PropTypes.string.isRequired
         //active: React.PropTypes.boolean
     },
 
@@ -21828,56 +21842,67 @@ var Tab = React.createClass({
     },
 
     render: function render() {
-        var classes = ["Tab"];
+        var classes = ['Tab'];
         if (this.props.active) {
-            classes.push("active");
+            classes.push('active');
         }
         var tabStyle = undefined;
-        if (this.props.orientation === "vertical") {
+        if (this.props.orientation === 'vertical') {
             tabStyle = {
-                cursor: "pointer",
-                display: "block"
+                cursor: 'pointer',
+                display: 'block'
             };
         } else {
             tabStyle = {
-                cursor: "pointer",
-                display: "inline-block"
+                cursor: 'pointer',
+                display: 'inline-block'
             };
         }
 
-        var styles = VendorPrefix.prefix({ tabStyle: tabStyle });
+        var styles = _VendorPrefix2['default'].prefix({ tabStyle: tabStyle });
 
-        return React.createElement(
-            "div",
-            { className: classes.join(" "), style: styles.tabStyle, onClick: this.onClick },
+        return _React2['default'].createElement(
+            'div',
+            { className: classes.join(' '), style: styles.tabStyle, onClick: this.onClick },
             this.props.name
         );
     }
 });
 
-module.exports = Tab;
+exports['default'] = Tab;
+module.exports = exports['default'];
 
 },{"react-vendor-prefix":3,"react/addons":4}],178:[function(require,module,exports){
-"use strict";
+'use strict';
 
-var _interopRequire = function (obj) { return obj && obj.__esModule ? obj["default"] : obj; };
+var _interopRequireWildcard = function (obj) { return obj && obj.__esModule ? obj : { 'default': obj }; };
 
-var React = _interopRequire(require("react/addons"));
+Object.defineProperty(exports, '__esModule', {
+    value: true
+});
 
-var Tab = _interopRequire(require("./Tab"));
+var _React = require('react/addons');
 
-var VendorPrefix = _interopRequire(require("react-vendor-prefix"));
+var _React2 = _interopRequireWildcard(_React);
 
-var TabPane = React.createClass({
-    displayName: "TabPane",
+var _Tab = require('./Tab');
+
+var _Tab2 = _interopRequireWildcard(_Tab);
+
+var _VendorPrefix = require('react-vendor-prefix');
+
+var _VendorPrefix2 = _interopRequireWildcard(_VendorPrefix);
+
+var TabPane = _React2['default'].createClass({
+    displayName: 'TabPane',
 
     propTypes: {
-        orientation: React.PropTypes.string.isRequired
+        orientation: _React2['default'].PropTypes.string.isRequired
     },
 
     getDefaultProps: function getDefaultProps() {
         return {
-            orientation: "vertical"
+            orientation: 'vertical'
         };
     },
 
@@ -21905,46 +21930,46 @@ var TabPane = React.createClass({
     },
 
     render: function render() {
-        var _this = this;
+        var _this2 = this;
 
-        var classes = ["TabPane", this.props.orientation].join(" ");
+        var classes = ['TabPane', this.props.orientation].join(' ');
         var containerStyles = undefined;
-        if (this.props.orientation === "vertical") {
+        if (this.props.orientation === 'vertical') {
             containerStyles = {
-                display: "flex",
+                display: 'flex',
                 flex: 1,
-                flexDirection: "row",
-                height: "100%",
-                position: "absolute",
+                flexDirection: 'row',
+                height: '100%',
+                position: 'absolute',
                 left: 0,
                 right: 0
             };
         } else {
             containerStyles = {
-                display: "flex",
+                display: 'flex',
                 flex: 1,
-                position: "relative",
-                flexDirection: "column",
-                height: "100%",
-                minHeight: "100%"
+                position: 'relative',
+                flexDirection: 'column',
+                height: '100%',
+                minHeight: '100%'
             };
         }
 
         var tabsStyles = undefined;
         var orientation = this.props.orientation;
-        if (orientation === "vertical") {
+        if (orientation === 'vertical') {
             tabsStyles = {
-                height: "100%"
+                height: '100%'
             };
         } else {
             tabsStyles = {
                 flex: 1,
-                width: "100%",
-                whiteSpace: "nowrap"
+                width: '100%',
+                whiteSpace: 'nowrap'
             };
         }
 
-        var paneClasses = ["TabContent", this.props.className].join(" ");
+        var paneClasses = ['TabContent', this.props.className].join(' ');
         var paneStyles = {
             flex: 1
         };
@@ -21952,31 +21977,31 @@ var TabPane = React.createClass({
         var activeId = this.state.activeTab.props.id;
         var elements = this.props.children.map(function (child) {
             var active = child.props.id === activeId;
-            return React.addons.cloneWithProps(child, {
+            return _React2['default'].addons.cloneWithProps(child, {
                 active: active,
-                selectTab: _this.selectTab,
+                selectTab: _this2.selectTab,
                 orientation: orientation,
                 id: child.props.id,
                 key: child.props.id
             });
         });
 
-        var styles = VendorPrefix.prefix({
+        var styles = _VendorPrefix2['default'].prefix({
             container: containerStyles,
             tab: tabsStyles,
             pane: paneStyles
         });
 
-        return React.createElement(
-            "div",
-            { className: classes, style: styles.container, ref: "TabPane" },
-            React.createElement(
-                "div",
-                { className: "Tabs", style: styles.tab },
+        return _React2['default'].createElement(
+            'div',
+            { className: classes, style: styles.container, ref: 'TabPane' },
+            _React2['default'].createElement(
+                'div',
+                { className: 'Tabs', style: styles.tab },
                 elements
             ),
-            React.createElement(
-                "div",
+            _React2['default'].createElement(
+                'div',
                 { className: paneClasses, style: styles.pane },
                 this.state.activeTab.props.children
             )
@@ -21984,6 +22009,7 @@ var TabPane = React.createClass({
     }
 });
 
-module.exports = TabPane;
+exports['default'] = TabPane;
+module.exports = exports['default'];
 
 },{"./Tab":177,"react-vendor-prefix":3,"react/addons":4}]},{},[1]);
