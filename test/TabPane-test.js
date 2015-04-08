@@ -15,10 +15,23 @@ describe('TabPane', function () {
     );
 
 
-    it('renders the TabPane', function () {
+    it('renders the tabs', function () {
         new Asserter(tabPane)
             .assertTabs(['A', 'B', 'C'])
+        ;
+    });
+
+
+    it('indicate active tab', function () {
+        new Asserter(tabPane)
             .assertActiveTab('B')
+        ;
+    });
+
+
+    it('render active tab contents', function () {
+        new Asserter(tabPane)
+            .assertTabContents('whatevs')
         ;
     });
 
@@ -30,25 +43,22 @@ describe('TabPane', function () {
         }
 
         assertTabs(expectedTabs) {
-            let suggestions = TestUtils.scryRenderedDOMComponentsWithClass(this.component, 'Tab');
-            const values = suggestions.map((suggestion) => {
-                return suggestion.getDOMNode().innerHTML;
+            const tabs = TestUtils.scryRenderedDOMComponentsWithClass(this.component, 'Tab');
+            const values = tabs.map((tab) => {
+                return tab.getDOMNode().innerHTML;
             });
             expect(values).to.eql(expectedTabs);
             return this;
         }
 
-        assertTabContentss(expectedTabContents) {
-            let suggestions = TestUtils.scryRenderedDOMComponentsWithClass(this.component, 'Tab');
-            const values = suggestions.map((suggestion) => {
-                return suggestion.getDOMNode().innerHTML;
-            });
-            expect(values).to.eql(expectedTabContents);
+        assertTabContents(expectedTabContents) {
+            const tabContents = TestUtils.findRenderedDOMComponentWithClass(this.component, 'TabContent');
+            expect(tabContents.getDOMNode().innerHTML).to.eql(expectedTabContents);
             return this;
         }
 
         assertActiveTab(expected) {
-            let active = TestUtils.findRenderedDOMComponentWithClass(this.component, 'active');
+            const active = TestUtils.findRenderedDOMComponentWithClass(this.component, 'active');
             expect(active.getDOMNode().innerHTML).to.equal(expected);
             return this;
         }
