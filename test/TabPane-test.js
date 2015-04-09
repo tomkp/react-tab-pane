@@ -36,6 +36,15 @@ describe('TabPane', function () {
     });
 
 
+    it('click to activate tab', function () {
+        new Asserter(tabPane)
+            .assertActiveTab('B')
+            .activateTab('C')
+            .assertActiveTab('C')
+        ;
+    });
+
+
     class Asserter {
 
         constructor(tabPane) {
@@ -60,6 +69,16 @@ describe('TabPane', function () {
         assertActiveTab(expected) {
             const active = TestUtils.findRenderedDOMComponentWithClass(this.component, 'active');
             expect(active.getDOMNode().innerHTML).to.equal(expected);
+            return this;
+        }
+
+        activateTab(tabName) {
+            const tabs = TestUtils.scryRenderedDOMComponentsWithClass(this.component, 'Tab');
+            tabs.forEach((tab) => {
+                if (tab.getDOMNode().innerHTML === tabName) {
+                    TestUtils.Simulate.click(tab);
+                }
+            });
             return this;
         }
     }
