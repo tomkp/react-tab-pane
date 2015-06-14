@@ -1,7 +1,7 @@
 {
   "name": "react-tab-pane",
   "description": "React tab-pane component",
-  "main": "src/TabPane.js",
+  "main": "index.js",
   "version": "0.0.2",
   "repository": {
     "type": "git",
@@ -12,6 +12,7 @@
     "react",
     "react-component",
     "tab-pane",
+    "react-tab-pane",
     "es6"
   ],
   "dependencies": {

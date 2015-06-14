@@ -1,9 +1,8 @@
 import React from 'react';
-import TabPane from '../src/TabPane';
-import Tab from '../src/Tab';
+import {TabPane, Tab} from '../';
 
 
-var Demo = React.createClass({
+let Demo = React.createClass({
 
     render: function() {
         return (
