@@ -1,4 +1,7 @@
+import TabPane from './src/TabPane.js';
+import Tab from './src/Tab.js';
+
 module.exports = {
-    TabPane: require('./src/TabPane.js'),
-    Tab: require('./src/Tab.js')
+    TabPane: TabPane,
+    Tab: Tab
 };
