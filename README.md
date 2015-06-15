@@ -14,4 +14,4 @@ Check out the [demo](http://possessive-parent.surge.sh/)
 ```
 
 [![Build Status](https://travis-ci.org/tomkp/react-tab-pane.png)](https://travis-ci.org/tomkp/react-tab-pane)
-
+[![Coverage Status](https://coveralls.io/repos/tomkp/react-tab-pane/badge.svg?branch=master)](https://coveralls.io/r/tomkp/react-tab-pane?branch=master)
