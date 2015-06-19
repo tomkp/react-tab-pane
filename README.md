@@ -1,4 +1,4 @@
-# react-tab-pane
+# React Tab Pane
 
 Tab-Pane component built with [React](http://facebook.github.io/react), can be split vertically or horizontally.
 
