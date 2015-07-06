@@ -2,6 +2,9 @@
 
 Tab-Pane component built with [React](http://facebook.github.io/react), can be split vertically or horizontally.
 
+[![Build Status](https://img.shields.io/travis/tomkp/react-tab-pane/master.svg?style=flat-square)](https://travis-ci.org/tomkp/react-tab-pane)
+[![Coverage Status](https://img.shields.io/coveralls/tomkp/react-tab-pane/master.svg?style=flat-square)](https://coveralls.io/r/tomkp/react-tab-pane)
+
 Check out the [demo](http://possessive-parent.surge.sh/)
 
 
@@ -13,5 +16,3 @@ Check out the [demo](http://possessive-parent.surge.sh/)
    </TabPane>
 ```
 
-[![Build Status](https://travis-ci.org/tomkp/react-tab-pane.png)](https://travis-ci.org/tomkp/react-tab-pane)
-[![Coverage Status](https://coveralls.io/repos/tomkp/react-tab-pane/badge.svg?branch=master)](https://coveralls.io/r/tomkp/react-tab-pane?branch=master)
