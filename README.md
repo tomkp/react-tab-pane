@@ -1,6 +1,6 @@
 # React Tab Pane
 
-Tab-Pane component built with [React](http://facebook.github.io/react), can be split vertically or horizontally.
+Tab-Pane component built with [React](http://facebook.github.io/react)
 
 [![Build Status](https://img.shields.io/travis/tomkp/react-tab-pane/master.svg?style=flat-square)](https://travis-ci.org/tomkp/react-tab-pane)
 [![Coverage Status](https://img.shields.io/coveralls/tomkp/react-tab-pane/master.svg?style=flat-square)](https://coveralls.io/r/tomkp/react-tab-pane)
