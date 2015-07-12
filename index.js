@@ -1,5 +1,5 @@
-import TabPane from './src/TabPane.js';
-import Tab from './src/Tab.js';
+import TabPane from './lib/TabPane.js';
+import Tab from './lib/Tab.js';
 
 module.exports = {
     TabPane: TabPane,
