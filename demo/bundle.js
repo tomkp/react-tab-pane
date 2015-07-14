@@ -41,19 +41,12 @@ _React2['default'].render(_React2['default'].createElement(Demo, null), document
 },{"../":2,"react":179}],2:[function(require,module,exports){
 'use strict';
 
-var _interopRequireWildcard = function (obj) { return obj && obj.__esModule ? obj : { 'default': obj }; };
-
-var _TabPane = require('./lib/TabPane.js');
-
-var _TabPane2 = _interopRequireWildcard(_TabPane);
-
-var _Tab = require('./lib/Tab.js');
-
-var _Tab2 = _interopRequireWildcard(_Tab);
+var TabPane = require('./lib/TabPane.js');
+var Tab = require('./lib/Tab.js');
 
 module.exports = {
-    TabPane: _TabPane2['default'],
-    Tab: _Tab2['default']
+    TabPane: TabPane,
+    Tab: Tab
 };
 
 },{"./lib/Tab.js":3,"./lib/TabPane.js":4}],3:[function(require,module,exports){

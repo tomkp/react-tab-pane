@@ -1,5 +1,5 @@
-import TabPane from './lib/TabPane.js';
-import Tab from './lib/Tab.js';
+var TabPane = require('./lib/TabPane.js');
+var Tab = require('./lib/Tab.js');
 
 module.exports = {
     TabPane: TabPane,
